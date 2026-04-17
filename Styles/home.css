@@ -1,0 +1,5 @@
+/* Ajustes visuales solo para Inicio */
+.output.lead {
+  font-size: 1rem;
+  border-left: 3px solid var(--accent-2);
+}

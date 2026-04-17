@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio — Portal Consola</title>
+  <link rel="stylesheet" href="Styles/base.css">
+  <link rel="stylesheet" href="Styles/home.css">
+  <meta name="color-scheme" content="dark light" />
+</head>
+<body>
+  <header class="titlebar">
+    <div class="dots">
+      <span class="dot dot-close"></span>
+      <span class="dot dot-min"></span>
+      <span class="dot dot-max"></span>
+    </div>
+    <div class="title">PowerShell — Portal Académico</div>
+  </header>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <a class="nav-link" href="index.html">Inicio</a>
+    <a class="nav-link" href="primer.html">Primer corte</a>
+    <a class="nav-link" href="segundo.html">Segundo corte</a>
+    <a class="nav-link" href="tercer.html">Tercer corte</a>
+  </nav>
+
+  <main class="console" role="main">
+    <section class="section" id="intro">
+      <h1>Inicio</h1>
+
+      <div class="line">
+        <span class="prompt">PS C:\Portal></span>
+        <span>Write-host "Introducción"</span>
+      </div>
+      <div class="output lead">
+        <strong>Introducción a CMD y PowerShell </strong><br><br>
+        CMD (Command Prompt) es un intérprete de comandos histórico de Windows, orientado a tareas
+        de administración básica y ejecución de utilidades del sistema mediante órdenes de texto.
+        Ofrece un conjunto estable de comandos tradicionales y un entorno sencillo, adecuado para 
+        operaciones directas como automatizaciones simples, diagnósticos elementales y manipulación
+        básica de archivos y procesos.<br><br>
+        PowerShell es una plataforma de automatización y shell más moderna que combina un lenguaje de
+        scripting robusto con acceso integral a componentes de Windows (como .NET, WMI/CIM, registro,
+        servicios y procesos). Su modelo de salida basado en objetos, la extensibilidad mediante
+        módulos, y su integración con sistemas locales y remotos lo convierten en la opción preferida
+        para administración avanzada, orquestación y tareas repetibles a gran escala.<br><br>
+        En términos generales, CMD prioriza compatibilidad y simplicidad tradicional, mientras que
+        PowerShell prioriza consistencia, estructuración de datos y capacidades de automatización
+        profundas. Elegir entre uno u otro depende del alcance de la tarea, el nivel de abstracción
+        requerido y la necesidad de integración con APIs y recursos del sistema.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Hecho con ❤ por Julián y Daniela — Estilo consola (PowerShell/CMD)</footer>
+  <script src="JS/common.js"></script>
+</body>
+</html>

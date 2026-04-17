@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Primer corte — Portal Consola</title>
+  <link rel="stylesheet" href="Styles/base.css">
+  <link rel="stylesheet" href="Styles/corte.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="dots"><span class="dot dot-close"></span><span class="dot dot-min"></span><span class="dot dot-max"></span></div>
+    <div class="title">PowerShell — Primer Corte</div>
+  </header>
+
+  <nav class="nav">
+    <a class="nav-link" href="index.html">Inicio</a>
+    <a class="nav-link" href="primer.html">Primer corte</a>
+    <a class="nav-link" href="segundo.html">Segundo corte</a>
+    <a class="nav-link" href="tercer.html">Tercer corte</a>
+  </nav>
+
+  <main class="console">
+    <section class="section">
+      <h2>Primer corte<span class="badge">Activo</span></h2>
+
+      <div class="line">
+        <span class="prompt">PS C:\Portal\Primer></span>
+        <span>dir</span>
+      </div>
+      <div class="selector-principal">
+        <p>Seleccione algún intérprete de comandos</p>
+        <button id="btn-cmd" class="btn-terminal cmd">CMD</button>
+        <button id="btn-ps" class="btn-terminal ps">PowerShell</button>
+      </div>
+      <div id="contenedor-categorias" class="menu-grid"></div>
+    
+    <section id="detalle-comando" class="ficha oculto">
+      <h3 id="titulo-opcion"></h3>
+
+      <div class="info-block">
+        <strong>Descripción:</strong>
+        <p id="desc"></p>
+      </div>
+
+      <div class="info-block">
+        <strong>Sintaxis:</strong>
+        <pre><code id="sintaxis"></code></pre>
+      </div>
+
+      <div class="info-block">
+        <strong>Ejemplo:</strong>
+        <pre><code id="ejemplo"></code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Hecho con ❤ por Julián y Daniela — Estilo consola(PowerShell/CMD)</footer>
+  <script src="JS/common.js"></script>
+</body>
+</html>

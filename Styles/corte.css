@@ -1,0 +1,5 @@
+/* Estilos específicos para páginas de cortes */
+.badge {
+  display:inline-block; padding:.1rem .4rem; border:1px solid #223; border-radius:.33rem;
+  color:#9ac6ff; background:#0a1219; margin-left:.4rem; font-size:.8rem;
+}
