@@ -1,5 +1,194 @@
-/* Estilos específicos para páginas de cortes */
-.badge {
-  display:inline-block; padding:.1rem .4rem; border:1px solid #223; border-radius:.33rem;
-  color:#9ac6ff; background:#0a1219; margin-left:.4rem; font-size:.8rem;
+/* corte.css — páginas de cortes */
+
+/* ─── Tab selector: CMD / PS ─── */
+.terminal-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: .45rem;
+  overflow: hidden;
+  width: fit-content;
+  margin: .8rem 0 1.5rem;
 }
+.tab-btn {
+  padding: .45rem 1.4rem;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  cursor: pointer;
+  border: none;
+  background: var(--panel-2);
+  color: var(--muted);
+  transition: background .18s, color .18s;
+}
+.tab-btn.cmd  { border-right: 1px solid var(--border); }
+.tab-btn.cmd.active { background: var(--accent-3); color: #000; }
+.tab-btn.ps.active  { background: var(--accent-2); color: #000; }
+.tab-btn:not(.active):hover { background: #161b22; color: var(--fg); }
+
+/* ─── Category header ─── */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 2rem 0 .8rem;
+}
+.category-header::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1.1rem;
+  border-radius: 2px;
+  background: var(--accent-2);
+  flex-shrink: 0;
+}
+.category-header.cmd::before { background: var(--accent-3); }
+.category-header h3 {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ─── Command card ─── */
+.cmd-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: .55rem;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.cmd-card:hover { border-color: var(--border-2); }
+.cmd-card.ps-card  { border-left: 3px solid var(--accent-2); }
+.cmd-card.cmd-card-style { border-left: 3px solid var(--accent-3); }
+
+/* card header */
+.cmd-card-head {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .7rem 1rem;
+  background: #0f1520;
+  border-bottom: 1px solid var(--border);
+}
+.cmd-card-head .chip {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .15rem .5rem;
+  border-radius: .25rem;
+}
+.chip-ps  { background: rgba(121,192,255,.12); color: var(--accent-2); }
+.chip-cmd { background: rgba(255,166,87,.12);  color: var(--accent-3); }
+
+.cmd-card-head .syntax-inline {
+  font-size: .88rem;
+  color: var(--accent);
+  font-weight: 500;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* card body — 3 columns on desktop */
+.cmd-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 800px) {
+  .cmd-card-body { grid-template-columns: 1fr; }
+}
+
+.cmd-col {
+  padding: 1rem 1.1rem;
+  border-right: 1px solid var(--border);
+}
+.cmd-col:last-child { border-right: none; }
+
+.cmd-col-label {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: .55rem;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+.cmd-col-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.col-desc .cmd-col-label::before   { background: var(--warn); }
+.col-syntax .cmd-col-label::before { background: var(--accent); }
+.col-output .cmd-col-label::before { background: var(--accent-2); }
+.col-analysis .cmd-col-label::before { background: #d2a8ff; }
+
+.cmd-col p {
+  font-size: .84rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Syntax block */
+.syntax-block {
+  background: #0b1016;
+  border: 1px solid #171f28;
+  border-radius: .35rem;
+  padding: .7rem .85rem;
+  font-size: .82rem;
+  color: var(--accent);
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.55;
+}
+
+/* Output / ejemplo block */
+.output-block {
+  background: #070c10;
+  border: 1px solid #111820;
+  border-radius: .35rem;
+  padding: .65rem .85rem;
+  font-size: .76rem;
+  color: #8aabbf;
+  white-space: pre-wrap;
+  line-height: 1.55;
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Analysis block */
+.analysis-block {
+  font-size: .83rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.analysis-block strong { color: var(--fg); }
+.analysis-block .tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 600;
+  padding: .1rem .4rem;
+  border-radius: .25rem;
+  margin-right: .3rem;
+  background: rgba(210,168,255,.1);
+  color: #d2a8ff;
+  letter-spacing: .05em;
+}
+
+/* ─── Section hidden by tab ─── */
+.shell-section { display: none; }
+.shell-section.visible { display: block; }
+/* ─── Otros estilos específicos para esta página (corte) ─── */

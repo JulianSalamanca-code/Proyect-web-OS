@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Primer corte — Portal Consola</title>
+  <title>Primer Corte — Portal Consola</title>
   <link rel="stylesheet" href="Styles/base.css">
   <link rel="stylesheet" href="Styles/corte.css">
 </head>
 <body>
+
   <header class="titlebar">
-    <div class="dots"><span class="dot dot-close"></span><span class="dot dot-min"></span><span class="dot dot-max"></span></div>
+    <div class="dots">
+      <span class="dot dot-close"></span>
+      <span class="dot dot-min"></span>
+      <span class="dot dot-max"></span>
+    </div>
     <div class="title">PowerShell — Primer Corte</div>
   </header>
 
@@ -22,40 +27,464 @@
 
   <main class="console">
     <section class="section">
-      <h2>Primer corte<span class="badge">Activo</span></h2>
+      <h2>Primer corte <span class="badge">Activo</span></h2>
 
       <div class="line">
-        <span class="prompt">PS C:\Portal\Primer></span>
-        <span>dir</span>
-      </div>
-      <div class="selector-principal">
-        <p>Seleccione algún intérprete de comandos</p>
-        <button id="btn-cmd" class="btn-terminal cmd">CMD</button>
-        <button id="btn-ps" class="btn-terminal ps">PowerShell</button>
-      </div>
-      <div id="contenedor-categorias" class="menu-grid"></div>
-    
-    <section id="detalle-comando" class="ficha oculto">
-      <h3 id="titulo-opcion"></h3>
-
-      <div class="info-block">
-        <strong>Descripción:</strong>
-        <p id="desc"></p>
+        <span class="prompt-ps">PS C:\Portal\Primer&gt;</span>
+        <span>Get-Commands -Corte 1 -All</span>
       </div>
 
-      <div class="info-block">
-        <strong>Sintaxis:</strong>
-        <pre><code id="sintaxis"></code></pre>
+      <!-- Tab selector -->
+      <div class="terminal-tabs">
+        <button class="tab-btn cmd" id="tab-cmd">CMD</button>
+        <button class="tab-btn ps"  id="tab-ps">PowerShell</button>
       </div>
 
-      <div class="info-block">
-        <strong>Ejemplo:</strong>
-        <pre><code id="ejemplo"></code></pre>
-      </div>
+
+      <!-- ══════════════════ CMD SECTION ══════════════════ -->
+      <div id="sec-cmd" class="shell-section">
+
+        <!-- Categoría: Archivos del sistema -->
+        <div class="category-header cmd"><h3>Archivos del sistema</h3></div>
+
+        <article class="cmd-card cmd-card-style">
+          <div class="cmd-card-head">
+            <span class="chip chip-cmd">CMD</span>
+            <span class="syntax-inline">sfc /scannow</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Escanea todos los archivos protegidos del sistema y reemplaza las versiones dañadas
+              o incorrectas por copias correctas almacenadas en caché por Windows.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">sfc /scannow</div>
+              <div class="output-block" style="margin-top:.5rem">Beginning system scan...
+Verification 100% complete.
+Windows Resource Protection did not find
+any integrity violations.</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">SFC</span><strong>System File Checker</strong> es una herramienta
+                integrada desde Windows 98. El flag <strong>/scannow</strong> inicia un análisis
+                completo en tiempo real. Requiere privilegios de administrador. Si detecta archivos
+                corruptos que no puede reparar, genera un log en
+                <code>%WinDir%\Logs\CBS\CBS.log</code> para diagnóstico adicional.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- Categoría: Procesador y Sistema -->
+        <div class="category-header cmd"><h3>Procesador y Sistema</h3></div>
+
+        <article class="cmd-card cmd-card-style">
+          <div class="cmd-card-head">
+            <span class="chip chip-cmd">CMD</span>
+            <span class="syntax-inline">systeminfo</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Muestra un resumen completo del equipo: nombre del host, versión del SO,
+              fabricante, modelo, procesador, memoria física y parches instalados.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">systeminfo</div>
+              <div class="output-block" style="margin-top:.5rem">Host Name:       DESKTOP-AB123CD
+OS Name:         Windows 11 Pro
+OS Version:      10.0.22631
+Processor:       Intel Core i7 ~2600 MHz
+Total RAM:       16,384 MB
+Available RAM:   8,245 MB</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">WMI</span>Consulta múltiples fuentes del sistema (WMI, registro,
+                APIs de Windows) para consolidar información de hardware y SO en una sola vista.
+                Útil como primer paso en diagnóstico: permite identificar de inmediato la versión
+                exacta del sistema, la cantidad de RAM disponible y los hotfixes aplicados
+                (<strong>Hotfix(s) installed</strong>).
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cmd-card cmd-card-style">
+          <div class="cmd-card-head">
+            <span class="chip chip-cmd">CMD</span>
+            <span class="syntax-inline">perfmon /report</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Genera un informe completo de diagnóstico de rendimiento del sistema,
+              recolectando métricas durante 60 segundos antes de presentar los resultados.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">perfmon /report</div>
+              <div class="output-block" style="margin-top:.5rem">Collecting data for 60 seconds...
+Analyzing results...
+
+Warnings:
+- High CPU usage detected
+- 1 device driver is outdated
+
+System responsiveness: Good
+Disk I/O: Normal</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">PerfMon</span>Lanza el <strong>Monitor de rendimiento</strong>
+                de Windows y genera un informe HTML interactivo. Analiza CPU, disco, red, memoria
+                y controladores. El reporte final se abre en el navegador predeterminado y contiene
+                secciones de advertencias, diagnósticos e información del sistema. Muy útil para
+                detectar cuellos de botella sin herramientas de terceros.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- Categoría: Disco duro -->
+        <div class="category-header cmd"><h3>Disco duro</h3></div>
+
+        <article class="cmd-card cmd-card-style">
+          <div class="cmd-card-head">
+            <span class="chip chip-cmd">CMD</span>
+            <span class="syntax-inline">chkdsk C: /f /r</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Verifica la integridad del sistema de archivos y los sectores físicos del disco.
+              <code>/f</code> corrige errores y <code>/r</code> localiza sectores defectuosos
+              recuperando información legible.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">chkdsk C: /f /r</div>
+              <div class="output-block" style="margin-top:.5rem">The type of the file system is NTFS.
+Stage 1: Examining basic file system...
+Stage 2: Examining file name linkage...
+Stage 3: Examining security descriptors...
+Windows has scanned the file system
+and found no problems.</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">NTFS</span>Opera a nivel de sistema de archivos y superficie
+                de disco. El flag <strong>/f</strong> corrige errores lógicos en la tabla de
+                archivos; <strong>/r</strong> hace una prueba de superficie sector a sector
+                (proceso lento). En unidades en uso, el análisis se programa para el próximo
+                reinicio. Imprescindible ante errores de escritura o sectores dañados.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cmd-card cmd-card-style">
+          <div class="cmd-card-head">
+            <span class="chip chip-cmd">CMD</span>
+            <span class="syntax-inline">fsutil dirty query C:</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Comprueba si el volumen tiene el bit "sucio" activo, lo que indica que Windows
+              programará un <code>chkdsk</code> automático en el próximo arranque.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">fsutil dirty query C:</div>
+              <div class="output-block" style="margin-top:.5rem">Volume - C: is NOT Dirty
+<!-- o bien: -->
+Volume - C: is Dirty</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">fsutil</span>El <strong>dirty bit</strong> es una marca que
+                Windows activa cuando detecta una inconsistencia en el sistema de archivos
+                (apagado abrupto, error de escritura). Si el volumen está "sucio",
+                <code>chkdsk</code> se ejecutará automáticamente al reiniciar. Este comando
+                permite verificar el estado sin necesidad de reiniciar el sistema.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- Categoría: Memoria RAM -->
+        <div class="category-header cmd"><h3>Memoria RAM</h3></div>
+
+        <article class="cmd-card cmd-card-style">
+          <div class="cmd-card-head">
+            <span class="chip chip-cmd">CMD</span>
+            <span class="syntax-inline">mdsched.exe</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Abre la herramienta de Diagnóstico de Memoria de Windows, que realiza pruebas
+              exhaustivas de los módulos RAM al reiniciar el sistema.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">mdsched.exe</div>
+              <div class="output-block" style="margin-top:.5rem">Windows Memory Diagnostic
+
+[•] Restart now and check for problems
+[ ] Check for problems next startup</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">MdSched</span>Ejecuta pruebas de memoria fuera del entorno de
+                Windows (antes de cargar el SO) para mayor fiabilidad. Ofrece dos niveles:
+                <strong>Básico</strong> y <strong>Extendido</strong> (más patrones de prueba).
+                Los resultados se muestran al volver a iniciar sesión. Ideal ante síntomas de
+                pantallas azules (BSOD) o errores aleatorios de aplicaciones.
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /sec-cmd -->
+
+
+      <!-- ══════════════════ POWERSHELL SECTION ══════════════════ -->
+      <div id="sec-ps" class="shell-section">
+
+        <!-- Categoría: Programas instalados -->
+        <div class="category-header"><h3>Programas instalados y actualizaciones</h3></div>
+
+        <article class="cmd-card ps-card">
+          <div class="cmd-card-head">
+            <span class="chip chip-ps">PS</span>
+            <span class="syntax-inline">Get-WmiObject Win32_Product | Select Name, Version</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Lista todos los programas instalados en el sistema mediante la clase WMI
+              <code>Win32_Product</code>, mostrando nombre y versión de cada uno.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">Get-WmiObject Win32_Product `
+  | Select Name, Version</div>
+              <div class="output-block" style="margin-top:.5rem">Name                   Version
+----                   -------
+Google Chrome          121.0.0
+Microsoft Office 365   16.0.0
+Git                    2.44.0</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">WMI</span><code>Win32_Product</code> consulta el instalador
+                de Windows (MSI) directamente. <strong>Nota:</strong> este cmdlet puede ser
+                lento porque valida cada paquete durante la consulta. Para listados rápidos,
+                se prefiere <code>Get-Package</code> o consultar el registro. El operador
+                <strong>|</strong> (pipeline) pasa los objetos al filtro <code>Select</code>.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cmd-card ps-card">
+          <div class="cmd-card-head">
+            <span class="chip chip-ps">PS</span>
+            <span class="syntax-inline">Get-Package</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Lista los paquetes y aplicaciones instaladas usando PackageManagement (OneGet),
+              incluyendo fuentes como MSI, Chocolatey o winget.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">Get-Package</div>
+              <div class="output-block" style="margin-top:.5rem">Name      Version  Source
+----      -------  ------
+7zip      19.00    Programs
+Git       2.44.0   Programs
+VSCode    1.87.0   Programs</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">PackageMgmt</span>A diferencia de <code>Win32_Product</code>,
+                <strong>Get-Package</strong> es significativamente más rápido al no lanzar el
+                proceso de validación MSI. Permite filtrar por proveedor con
+                <code>-ProviderName</code> o buscar un paquete específico con
+                <code>-Name "nombre"</code>. Útil para auditorías de software.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cmd-card ps-card">
+          <div class="cmd-card-head">
+            <span class="chip chip-ps">PS</span>
+            <span class="syntax-inline">Get-WindowsUpdateLog</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Convierte los registros ETL de Windows Update en un archivo de texto legible
+              (.log) y lo guarda en el escritorio del usuario actual.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">Get-WindowsUpdateLog</div>
+              <div class="output-block" style="margin-top:.5rem">Windows Update log successfully
+written to:
+C:\Users\Admin\Desktop\
+  WindowsUpdate.log</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">ETW</span>Windows almacena los registros de actualización en
+                formato binario ETL (Event Tracing for Windows). Este cmdlet los convierte a
+                texto plano usando símbolos de depuración. El log resultante permite rastrear
+                descargas fallidas, errores de instalación y el historial completo de parches
+                aplicados al sistema.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- Categoría: Procesador y sistema -->
+        <div class="category-header"><h3>Procesador y Sistema</h3></div>
+
+        <article class="cmd-card ps-card">
+          <div class="cmd-card-head">
+            <span class="chip chip-ps">PS</span>
+            <span class="syntax-inline">Get-WmiObject Win32_Processor | Select Name, NumberOfCores…</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Obtiene información detallada del procesador: nombre, número de núcleos
+              físicos, hilos lógicos y velocidad máxima de reloj.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">Get-WmiObject Win32_Processor `
+  | Select Name,
+           NumberOfCores,
+           NumberOfLogicalProcessors</div>
+              <div class="output-block" style="margin-top:.5rem">Name              : Intel Core i7-10750H
+NumberOfCores     : 6
+LogicalProcessors : 12
+MaxClockSpeed     : 2600</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">CIM/WMI</span>La clase <code>Win32_Processor</code> expone más
+                de 40 propiedades del CPU. La diferencia entre
+                <strong>NumberOfCores</strong> (físicos) y
+                <strong>NumberOfLogicalProcessors</strong> (hilos) indica si el procesador
+                usa Hyper-Threading. Aquí 6 núcleos → 12 hilos lógicos confirma HT activo.
+                Útil para ajustar procesos de paralelización.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cmd-card ps-card">
+          <div class="cmd-card-head">
+            <span class="chip chip-ps">PS</span>
+            <span class="syntax-inline">Get-ComputerInfo</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Devuelve un objeto con más de 200 propiedades del sistema: versión de Windows,
+              nombre del equipo, memoria total, número de procesadores y mucho más.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">Get-ComputerInfo</div>
+              <div class="output-block" style="margin-top:.5rem">WindowsProductName   : Windows 11 Pro
+WindowsVersion       : 22H2
+CsName               : DESKTOP-AB123CD
+CsTotalPhysicalMemory: 17179869184
+CsProcessorCount     : 1</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">CIM</span>Introducido en PowerShell 5.1, reemplaza múltiples
+                consultas WMI por una sola llamada consolidada. <strong>CsTotalPhysicalMemory</strong>
+                devuelve bytes (17 179 869 184 B = 16 GB). Para filtrar propiedades específicas
+                se puede combinar con <code>Select-Object -Property "Cs*"</code>. Muy eficiente
+                para inventario automatizado de equipos.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- Categoría: Memoria RAM -->
+        <div class="category-header"><h3>Memoria RAM</h3></div>
+
+        <article class="cmd-card ps-card">
+          <div class="cmd-card-head">
+            <span class="chip chip-ps">PS</span>
+            <span class="syntax-inline">Get-Counter '\Memory\Available MBytes'</span>
+          </div>
+          <div class="cmd-card-body">
+            <div class="cmd-col col-desc">
+              <div class="cmd-col-label">Descripción</div>
+              <p>Consulta en tiempo real el contador de rendimiento de memoria disponible,
+              devolviendo el valor actual en megabytes junto al timestamp de la medición.</p>
+            </div>
+            <div class="cmd-col col-syntax">
+              <div class="cmd-col-label">Sintaxis / Salida</div>
+              <div class="syntax-block">Get-Counter '\Memory\Available MBytes'</div>
+              <div class="output-block" style="margin-top:.5rem">Timestamp          CounterSamples
+---------          --------------
+19/04/2026 10:15   \\DESKTOP\memory\
+                   available mbytes:
+                   8245</div>
+            </div>
+            <div class="cmd-col col-analysis">
+              <div class="cmd-col-label">Análisis</div>
+              <div class="analysis-block">
+                <span class="tag">PerfCounter</span>Accede directamente a los
+                <strong>contadores de rendimiento</strong> de Windows (misma fuente que el
+                Monitor de rendimiento). Para monitoreo continuo se puede usar el parámetro
+                <code>-Continuous</code> o <code>-SampleInterval 5 -MaxSamples 12</code>
+                para tomar 12 muestras cada 5 segundos. Ideal para scripts de alerta de
+                memoria en servidores.
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /sec-ps -->
+
     </section>
   </main>
 
-  <footer class="footer">Hecho con ❤ por Julián y Daniela — Estilo consola(PowerShell/CMD)</footer>
+  <footer class="footer">Hecho con ❤ por Julián y Daniela — Estilo consola (PowerShell / CMD)</footer>
   <script src="JS/common.js"></script>
 </body>
 </html>

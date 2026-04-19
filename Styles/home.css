@@ -1,5 +1,77 @@
-/* Ajustes visuales solo para Inicio */
-.output.lead {
-  font-size: 1rem;
-  border-left: 3px solid var(--accent-2);
+/* home.css — página de inicio */
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 680px) {
+  .intro-grid { grid-template-columns: 1fr; }
+}
+
+.shell-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  padding: 1.25rem 1.2rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.shell-card:hover {
+  border-color: var(--border-2);
+  box-shadow: 0 0 18px rgba(0,0,0,.35);
+}
+
+.shell-card.cmd  { border-top: 2px solid var(--accent-3); }
+.shell-card.ps   { border-top: 2px solid var(--accent-2); }
+
+.shell-card .label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+.shell-card.cmd  .label { color: var(--accent-3); }
+.shell-card.ps   .label { color: var(--accent-2); }
+
+.shell-card p {
+  font-size: .87rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.comparison-table {
+  width: 100%;
+  margin-top: 1.2rem;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.comparison-table th {
+  padding: .55rem .8rem;
+  background: #0f1520;
+  color: var(--accent-2);
+  font-weight: 600;
+  text-align: left;
+  border: 1px solid var(--border);
+  letter-spacing: .04em;
+}
+.comparison-table th.cmd-col { color: var(--accent-3); }
+
+.comparison-table td {
+  padding: .5rem .8rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.comparison-table tr:nth-child(even) td {
+  background: rgba(255,255,255,.018);
+}
+.comparison-table td:first-child {
+  color: var(--fg);
+  font-weight: 500;
+  background: rgba(255,255,255,.02);
+  white-space: nowrap;
 }

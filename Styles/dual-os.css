@@ -1,0 +1,217 @@
+/* =========================================
+   1. RESET Y FUNDAMENTALES (Basado en OS)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f7f9fb; /* Fondo muy claro y limpio */
+    padding-top: 60px; /* Espacio para la cabecera fija */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-weight: 300; /* Típico de Windows */
+    margin: 0;
+}
+
+/* =========================================
+   2. CABECERA (Header) Estilo Glassmorphism
+   ========================================= */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px); /* Efecto desdibujado de Windows 11 */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.site-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0078d7; /* Azul Windows principal */
+}
+
+.main-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #0078d7;
+}
+
+/* =========================================
+   3. ZONA DE BIENVENIDA Y VOKI AVATAR
+   ========================================= */
+.welcome-zone {
+    padding: 60px 0 40px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-container h1 {
+    font-size: 2.2rem;
+    color: #111;
+}
+
+.welcome-container p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+/* Estilos específicos para el Voki */
+.avatar-voki-container {
+    width: 200px; /* Tamaño del avatar */
+    height: 200px; 
+    margin-top: 30px;
+    border-radius: 50%; /* Lo hacemos circular */
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo provisional mientras no pegas el código */
+.voki-placeholder {
+    padding: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* =========================================
+   4. SECCIONES DE SISTEMAS OPERATIVOS (Zonas)
+   ========================================= */
+.os-section {
+    padding: 80px 0;
+}
+
+/* Cabecera de info dentro de cada sección (Logo + Título) */
+.os-info-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+/* Logo SVG */
+.os-logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* Contenedor del Vídeo */
+.os-video-container {
+    box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+}
+
+/* --- TEMA WINDOWS (Parte Superior) --- */
+.windows-theme {
+    /* Degradado sutil inspirado en los fondos de Windows 11 */
+    background: linear-gradient(180deg, rgba(235, 245, 255, 0.5) 0%, rgba(247, 249, 251, 1) 100%);
+}
+
+.windows-theme h2 {
+    color: #1a1a1a;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+/* --- TEMA UBUNTU (Parte Inferior) --- */
+.ubuntu-theme {
+    background-color: #300A24; /* Color berenjena oscuro clásico de Ubuntu OS */
+    color: #ffffff;
+    font-family: 'Ubuntu', sans-serif; /* Usamos la fuente de Ubuntu */
+    border-top: 3px solid #E95420; /* Borde naranja de separación */
+}
+
+.ubuntu-theme h2 {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+/* =========================================
+   5. FOOTER Y ANIMACIONES
+   ========================================= */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+/* Clases de animación JS (Igual que antes) */
+.animar-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+}
+
+.animar-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.os-logo-img {
+    width: 60px;          /* Ajusta el tamaño a tu gusto */
+    height: auto;         /* Mantiene la proporción original */
+    object-fit: contain;  /* Evita que la imagen se estire feo */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* Le da un poco de relieve */
+}
+
+.avatar-voki-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}

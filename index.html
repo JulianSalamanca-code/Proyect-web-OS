@@ -6,9 +6,9 @@
   <title>Inicio — Portal Consola</title>
   <link rel="stylesheet" href="Styles/base.css">
   <link rel="stylesheet" href="Styles/home.css">
-  <meta name="color-scheme" content="dark light" />
 </head>
 <body>
+
   <header class="titlebar">
     <div class="dots">
       <span class="dot dot-close"></span>
@@ -25,35 +25,102 @@
     <a class="nav-link" href="tercer.html">Tercer corte</a>
   </nav>
 
-  <main class="console" role="main">
-    <section class="section" id="intro">
+  <main class="console">
+    <section class="section">
       <h1>Inicio</h1>
 
       <div class="line">
-        <span class="prompt">PS C:\Portal></span>
-        <span>Write-host "Introducción"</span>
+        <span class="prompt">PS C:\Portal&gt;</span>
+        <span>Write-Host "¿Qué es CMD vs PowerShell?"</span>
       </div>
-      <div class="output lead">
-        <strong>Introducción a CMD y PowerShell </strong><br><br>
-        CMD (Command Prompt) es un intérprete de comandos histórico de Windows, orientado a tareas
-        de administración básica y ejecución de utilidades del sistema mediante órdenes de texto.
-        Ofrece un conjunto estable de comandos tradicionales y un entorno sencillo, adecuado para 
-        operaciones directas como automatizaciones simples, diagnósticos elementales y manipulación
-        básica de archivos y procesos.<br><br>
-        PowerShell es una plataforma de automatización y shell más moderna que combina un lenguaje de
-        scripting robusto con acceso integral a componentes de Windows (como .NET, WMI/CIM, registro,
-        servicios y procesos). Su modelo de salida basado en objetos, la extensibilidad mediante
-        módulos, y su integración con sistemas locales y remotos lo convierten en la opción preferida
-        para administración avanzada, orquestación y tareas repetibles a gran escala.<br><br>
-        En términos generales, CMD prioriza compatibilidad y simplicidad tradicional, mientras que
-        PowerShell prioriza consistencia, estructuración de datos y capacidades de automatización
-        profundas. Elegir entre uno u otro depende del alcance de la tarea, el nivel de abstracción
-        requerido y la necesidad de integración con APIs y recursos del sistema.
+
+      <div class="output lead" style="margin-bottom:1.5rem">
+        Portal académico de referencia rápida para administración de Windows mediante
+        intérpretes de comandos. Cada sección agrupa comandos por categoría con su
+        descripción, sintaxis de uso y ejemplo de salida real.
+      </div>
+
+      <!-- Cards CMD / PS -->
+      <div class="intro-grid">
+        <div class="shell-card cmd">
+          <div class="label">CMD — Command Prompt</div>
+          <p>
+            Intérprete clásico de Windows heredado del sistema MS-DOS.
+            Opera con comandos de texto plano orientados a tareas de
+            administración básica: diagnóstico de disco, reparación de
+            archivos del sistema, información de hardware y automatizaciones
+            simples mediante scripts <code>.bat</code>.
+            Ideal cuando se requiere compatibilidad máxima o un entorno
+            sin dependencias externas.
+          </p>
+        </div>
+
+        <div class="shell-card ps">
+          <div class="label">PowerShell</div>
+          <p>
+            Shell moderna basada en .NET que devuelve <strong>objetos</strong>
+            en lugar de texto plano. Permite acceder a WMI/CIM, el registro,
+            servicios, procesos y APIs remotas con un lenguaje de scripting
+            robusto. Módulos, pipelines estructurados y soporte multiplataforma
+            la convierten en la opción estándar para administración avanzada
+            y orquestación a gran escala.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="line" style="margin-top:1.5rem">
+        <span class="prompt">PS C:\Portal&gt;</span>
+        <span>Compare-Shells -Property All</span>
+      </div>
+
+      <div style="overflow-x:auto">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th class="cmd-col">CMD</th>
+              <th>PowerShell</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tipo de salida</td>
+              <td>Texto plano</td>
+              <td>Objetos .NET</td>
+            </tr>
+            <tr>
+              <td>Scripting</td>
+              <td>Archivos <code>.bat / .cmd</code></td>
+              <td>Scripts <code>.ps1</code> con clases, módulos y funciones avanzadas</td>
+            </tr>
+            <tr>
+              <td>Acceso a sistema</td>
+              <td>Comandos integrados de Windows</td>
+              <td>WMI, CIM, .NET Framework, APIs REST</td>
+            </tr>
+            <tr>
+              <td>Curva de aprendizaje</td>
+              <td>Baja — comandos directos</td>
+              <td>Media-alta — requiere lógica OOP básica</td>
+            </tr>
+            <tr>
+              <td>Multiplataforma</td>
+              <td>Solo Windows</td>
+              <td>Windows, Linux, macOS (PowerShell Core)</td>
+            </tr>
+            <tr>
+              <td>Caso de uso ideal</td>
+              <td>Diagnóstico rápido, compatibilidad legacy</td>
+              <td>Automatización, administración remota, DevOps</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   </main>
 
-  <footer class="footer">Hecho con ❤ por Julián y Daniela — Estilo consola (PowerShell/CMD)</footer>
+  <footer class="footer">Hecho con ❤ por Julián y Daniela — Estilo consola (PowerShell / CMD)</footer>
   <script src="JS/common.js"></script>
 </body>
 </html>
