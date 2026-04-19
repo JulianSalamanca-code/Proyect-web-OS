@@ -215,3 +215,70 @@ h2 {
     border-radius: 50%;
     overflow: hidden;
 }
+
+/* Contenedor principal de la tarjeta */
+.card-requisitos {
+    background: rgba(255, 255, 255, 0.95); /* Fondo casi blanco para que resalte */
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 850px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra para dar profundidad */
+    color: #333; /* Texto oscuro para que se lea bien */
+    text-align: left;
+}
+
+/* Títulos de las tarjetas */
+.card-requisitos h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Sistema de columnas */
+.grid-requisitos {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.columna h4 {
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.columna ul {
+    list-style: none;
+    padding: 0;
+}
+
+.columna li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* Puntitos personalizados */
+.columna li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Colores de acento para Windows y Ubuntu */
+.win-card { border-top: 8px solid #0078d7; }
+.win-card li::before { color: #0078d7; }
+
+.ubu-card { border-top: 8px solid #E95420; }
+.ubu-card li::before { color: #E95420; }
+
+/* Ajuste para móviles */
+@media (max-width: 600px) {
+    .grid-requisitos { flex-direction: column; }
+}
