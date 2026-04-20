@@ -1,123 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Segundo Corte — Instalación OS</title>
-    
-    <link rel="stylesheet" href="Styles/dual-os.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Segundo Corte — Instalación OS</title>
+  <link rel="stylesheet" href="Styles/dual-os.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-content">
-            <span class="site-title">Guías de Instalación OS</span>
-            <nav class="main-nav">
-                <a class="nav-link" href="index.html">Inicio</a>
-                <a class="nav-link" href="primer.html">Primer Corte</a>
-                <a class="nav-link" href="segundo.html">Segundo Corte</a>
-                <a class="nav-link" href="tercer.html">Tercer Corte</a>
-            </nav>
-        </div>
-    </header>
+  <!-- ─── Header ─── -->
+  <header class="main-header">
+    <div class="header-content">
+      <span class="site-title">Guías de Instalación OS</span>
+      <nav class="main-nav">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="primer.html">Primer Corte</a>
+        <a class="nav-link active" href="segundo.html">Segundo Corte</a>
+        <a class="nav-link" href="tercer.html">Tercer Corte</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="welcome-zone">
-        <div class="container welcome-container">
-            <h1>Bienvenido a los Vídeos Guía</h1>
-            <p>Aprende paso a paso cómo instalar Windows y Ubuntu. Mira las guías en vídeo y prepárate para el laboratorio.</p>
-            
-            <div class="avatar-voki-container">
-              <iframe 
-                src="https://www.voki.com/site/pickup?scid=20791518&chsm=e5a82dcf08ead096aefb56ef4cb15210" 
-                width="100%" 
-                height="100%" 
-                style="border:0; border-radius: 50%;" 
-                allow="autoplay">
-              </iframe>
-            </div>
-        </div>
-    </section>
+  <!-- ─── Hero ─── -->
+  <section class="welcome-zone">
+    <div class="container welcome-container">
+      <h1>Guías de <span>instalación</span> en VM</h1>
+      <p>Aprende paso a paso cómo instalar Windows y Ubuntu en una máquina virtual.
+         Cada vídeo incluye los requisitos mínimos y recomendaciones prácticas.</p>
 
-    <section class="os-section windows-theme">
-        <div class="container animar-scroll">
-            <div class="os-info-header">
-                <img src="IMG/1685424032microsoft windows-11-icon.png" alt="Windows Logo" class="os-logo-img">
-                <h2>Instalación de Windows</h2>
-            </div>
-            <div class="os-video-container">
-                <video width="100%" height="auto" controls>
-                    <source src="videos/Intalación-sistemas-operativo-windows-10-en-una-VM.mp4" type="video/mp4">
-                </video>
-                <div class="card-requisitos win-card">
-                <h3>Requisitos para Virtualizar Windows 10/11</h3>
-                    <div class="grid-requisitos">
-                        <div class="columna">
-                        <h4>Mínimos</h4>
-                            <ul>
-                                <li><strong>RAM:</strong> 4 GB</li>
-                                <li><strong>CPU:</strong> 1 Núcleo (vCPU)</li>
-                                <li><strong>Disco:</strong> 64 GB</li>
-                                <li><strong>VRAM:</strong> 128 MB</li>
-                            </ul>
-                        </div>
-                        <div class="columna">
-                        <h4>Recomendados</h4>
-                            <ul>
-                                <li><strong>RAM:</strong> 8 GB</li>
-                                <li><strong>CPU:</strong> 2 Núcleos o más</li>
-                                <li><strong>Disco:</strong> 100 GB (SSD)</li>
-                                <li><strong>VRAM:</strong> 256 MB + 3D</li>
-                            </ul>
-                        </div>
-                    </div>
+      <div class="avatar-voki-container">
+        <iframe
+          src="https://www.voki.com/site/pickup?scid=20791518&chsm=e5a82dcf08ead096aefb56ef4cb15210"
+          allow="autoplay">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       WINDOWS
+  ══════════════════════════════════════ -->
+  <section class="os-section windows-theme">
+    <div class="container">
+
+      <div class="os-info-header animar-scroll">
+        <img src="IMG/1685424032microsoft windows-11-icon.png" alt="Windows Logo" class="os-logo-img">
+        <h2>Instalación de Windows</h2>
+      </div>
+
+      <div class="os-layout animar-scroll">
+
+        <!-- Video -->
+        <div class="os-video-container">
+          <video controls preload="metadata">
+            <source src="videos/Intalación-sistemas-operativo-windows-10-en-una-VM.mp4" type="video/mp4">
+            Tu navegador no soporta vídeo HTML5.
+          </video>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="os-sidebar">
+
+          <!-- Especificaciones -->
+          <div class="info-card win-specs">
+            <h3>Requisitos para VM</h3>
+            <div class="specs-grid">
+              <div class="spec-col">
+                <h4>Mínimos</h4>
+                <div class="spec-item">
+                  <span class="spec-key">RAM</span>
+                  <span class="spec-val">4 GB</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="os-section ubuntu-theme">
-        <div class="container animar-scroll">
-            <div class="os-info-header">
-                <img src="IMG/ubuntu.svg" alt="Ubuntu Logo" class="os-logo-img">
-                <h2>Instalación de Ubuntu</h2>
-            </div>
-            <div class="os-video-container">
-                <video width="100%" height="auto" controls>
-                    <source src="videos/Intalacion-Linux-en-una-virtualbox.mp4" type="video/mp4">
-                </video>
-                <div class="card-requisitos ubu-card">
-                <h3>Requisitos para Virtualizar Ubuntu</h3>
-                    <div class="grid-requisitos">
-                        <div class="columna">
-                        <h4>Mínimos</h4>
-                            <ul>
-                                <li><strong>RAM:</strong> 2 GB</li>
-                                <li><strong>CPU:</strong> Dual Core 2GHz</li>
-                                <li><strong>Disco:</strong> 25 GB</li>
-                                <li><strong>Gráficos:</strong> VGA</li>
-                            </ul>
-                        </div>
-                        <div class="columna">
-                        <h4>Recomendados</h4>
-                            <ul>
-                                <li><strong>RAM:</strong> 4 GB</li>
-                                <li><strong>CPU:</strong> Quad Core 2GHz</li>
-                                <li><strong>Disco:</strong> 40 GB</li>
-                                <li><strong>Gráficos:</strong> Aceleración 3D</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="spec-item">
+                  <span class="spec-key">CPU</span>
+                  <span class="spec-val">1 vCPU</span>
                 </div>
+                <div class="spec-item">
+                  <span class="spec-key">Disco</span>
+                  <span class="spec-val">64 GB</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">VRAM</span>
+                  <span class="spec-val">128 MB</span>
+                </div>
+              </div>
+              <div class="spec-col">
+                <h4>Recomendados</h4>
+                <div class="spec-item">
+                  <span class="spec-key">RAM</span>
+                  <span class="spec-val">8 GB</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">CPU</span>
+                  <span class="spec-val">2+ vCPU</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">Disco</span>
+                  <span class="spec-val">100 GB SSD</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">VRAM</span>
+                  <span class="spec-val">256 MB + 3D</span>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Recomendaciones -->
+          <div class="info-card win-tips">
+            <h3>Recomendaciones</h3>
+            <ul class="tips-list">
+              <li>Activa la <strong>virtualización por hardware</strong> (VT-x / AMD-V) en la BIOS antes de empezar.</li>
+              <li>Usa un disco <strong>SSD</strong> como almacenamiento para la VM para evitar tiempos de carga largos.</li>
+              <li>Instala las <strong>Guest Additions</strong> de VirtualBox al terminar para mejorar resolución y rendimiento.</li>
+              <li>No asignes más del <strong>50% de tu RAM física</strong> a la VM para evitar ralentizar el host.</li>
+              <li>Descarga la ISO directamente desde <strong>microsoft.com</strong> para garantizar que sea legítima.</li>
+            </ul>
+          </div>
+
+        </aside>
+      </div><!-- /os-layout -->
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       UBUNTU
+  ══════════════════════════════════════ -->
+  <section class="os-section ubuntu-theme">
+    <div class="container">
+
+      <div class="os-info-header animar-scroll">
+        <img src="IMG/ubuntu.svg" alt="Ubuntu Logo" class="os-logo-img">
+        <h2>Instalación de Ubuntu</h2>
+      </div>
+
+      <div class="os-layout animar-scroll">
+
+        <!-- Video -->
+        <div class="os-video-container">
+          <video controls preload="metadata">
+            <source src="videos/Intalacion-Linux-en-una-virtualbox.mp4" type="video/mp4">
+            Tu navegador no soporta vídeo HTML5.
+          </video>
         </div>
-    </section>
 
-    <footer class="main-footer">
-        Hecho con ❤ por Julián y Daniela
-    </footer>
+        <!-- Sidebar -->
+        <aside class="os-sidebar">
 
-    <script src="JS/efectos.js"></script>
+          <!-- Especificaciones -->
+          <div class="info-card ubu-specs">
+            <h3>Requisitos para VM</h3>
+            <div class="specs-grid">
+              <div class="spec-col">
+                <h4>Mínimos</h4>
+                <div class="spec-item">
+                  <span class="spec-key">RAM</span>
+                  <span class="spec-val">2 GB</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">CPU</span>
+                  <span class="spec-val">Dual Core</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">Disco</span>
+                  <span class="spec-val">25 GB</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">Gráficos</span>
+                  <span class="spec-val">VGA</span>
+                </div>
+              </div>
+              <div class="spec-col">
+                <h4>Recomendados</h4>
+                <div class="spec-item">
+                  <span class="spec-key">RAM</span>
+                  <span class="spec-val">4 GB</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">CPU</span>
+                  <span class="spec-val">Quad Core</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">Disco</span>
+                  <span class="spec-val">40 GB</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-key">Gráficos</span>
+                  <span class="spec-val">Aceleración 3D</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recomendaciones -->
+          <div class="info-card ubu-tips">
+            <h3>Recomendaciones</h3>
+            <ul class="tips-list">
+              <li>Elige <strong>Instalación mínima</strong> durante el setup para un sistema más ligero y rápido en VM.</li>
+              <li>Activa la opción <strong>"Descargar actualizaciones al instalar"</strong> para tener el sistema al día desde el inicio.</li>
+              <li>Instala <strong>VirtualBox Guest Additions</strong> para habilitar carpetas compartidas y pantalla completa.</li>
+              <li>Ejecuta <code>sudo apt update && sudo apt upgrade</code> como primer comando tras la instalación.</li>
+              <li>La ISO oficial se descarga en <strong>ubuntu.com/download</strong> — verifica el checksum SHA256.</li>
+            </ul>
+          </div>
+
+        </aside>
+      </div><!-- /os-layout -->
+
+    </div>
+  </section>
+
+
+  <footer class="main-footer">
+    Hecho con ❤ por Julián y Daniela
+  </footer>
+
+  <script src="JS/efectos.js"></script>
 </body>
 </html>
